@@ -4,172 +4,142 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>متجر فرسان</title>
-  <!-- أيقونات Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     body {
-      background-color: #2E0249; /* بنفسجي غامق */
-      color: #E0E0E0; /* نصوص فضية */
-      font-family: 'Tajawal', sans-serif;
+      font-family: 'Tahoma', sans-serif;
       margin: 0;
-      padding-bottom: 80px; /* مساحة تحت للقائمة */
-    }
-
-    header {
-      background: linear-gradient(90deg, #6A0DAD, #9A4DFF);
-      padding: 20px;
+      padding: 0;
+      background: #111;
+      color: #fff;
       text-align: center;
-      color: white;
-      font-size: 22px;
-      font-weight: bold;
     }
-
+    header {
+      background: #222;
+      padding: 15px;
+      font-size: 1.5em;
+      color: gold;
+    }
     .products {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 15px;
-      padding: 15px;
+      padding: 20px;
     }
-
-    .card {
-      background-color: #3A0CA3;
-      border-radius: 12px;
-      padding: 15px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      text-align: center;
-    }
-
-    .card img {
-      width: 100%;
+    .product {
+      background: #222;
+      border: 1px solid gold;
       border-radius: 10px;
-      margin-bottom: 10px;
+      padding: 15px;
     }
-
-    .card h3 {
-      margin: 10px 0;
-      color: #CFCFCF;
-    }
-
-    .price {
-      color: #9A4DFF;
-      font-weight: bold;
-      font-size: 18px;
-    }
-
-    .old-price {
-      color: #B0B0B0;
-      text-decoration: line-through;
-      font-size: 14px;
-      display: block;
-      margin-top: 5px;
-    }
-
-    .btn {
-      background: linear-gradient(90deg, #9A4DFF, #6A0DAD);
-      color: #FFFFFF;
+    .product h3 { color: gold; }
+    button {
+      background: gold;
+      color: black;
       border: none;
-      padding: 12px 18px;
-      border-radius: 8px;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease-in-out;
+      padding: 10px;
       margin-top: 10px;
-      display: inline-block;
+      cursor: pointer;
+      border-radius: 5px;
+      font-weight: bold;
     }
-
-    .btn:hover {
-      background: linear-gradient(90deg, #6A0DAD, #9A4DFF);
-      transform: scale(1.05);
+    button:hover {
+      background: #fff;
+      color: black;
     }
-
-    /* الشريط السفلي */
-    .navbar-bottom {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #3A0CA3;
+    .bottom-nav {
       display: flex;
       justify-content: space-around;
-      align-items: center;
+      background: #000;
       padding: 10px 0;
-      border-top: 2px solid #9A4DFF;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      border-top: 2px solid gold;
     }
-
-    .navbar-bottom a {
-      color: #B0B0B0; /* لون فضي ثابت */
+    .bottom-nav a {
+      color: gold;
       text-decoration: none;
-      font-size: 14px;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: color 0.3s ease-in-out;
+      font-weight: bold;
+      cursor: pointer;
     }
-
-    .navbar-bottom a i {
-      font-size: 20px;
-      margin-bottom: 5px;
-    }
-
-    /* القائمة النشطة */
-    .navbar-bottom a.active {
-      color: #9A4DFF; /* بنفسجي دايم */
-    }
-
-    .navbar-bottom a:hover,
-    .navbar-bottom a:focus {
-      color: #9A4DFF; /* بنفسجي عند اللمس */
-    }
+    .bottom-nav a:hover { color: white; }
+    main { padding-bottom: 70px; }
   </style>
 </head>
 <body>
-
   <header>
-    متجر فرسان - بطاقات رقمية
+    <h1>متجر فرسان</h1>
   </header>
 
-  <section class="products">
-    <div class="card">
-      <img src="https://via.placeholder.com/250x150" alt="بطاقة رقمية">
-      <h3>كود ستيم ($20)</h3>
-      <span class="price">20 دولار</span>
-      <span class="old-price">25 دولار</span>
-      <button class="btn">اشترِ الآن</button>
-    </div>
+  <main id="content"></main>
 
-    <div class="card">
-      <img src="https://via.placeholder.com/250x150" alt="بطاقة رقمية">
-      <h3>بطاقة شحن (50 ريال)</h3>
-      <span class="price">49 ر.س</span>
-      <span class="old-price">59 ر.س</span>
-      <button class="btn">اشترِ الآن</button>
-    </div>
+  <footer>
+    <nav class="bottom-nav">
+      <a onclick="showPage('home')">الرئيسية</a>
+      <a onclick="showPage('cart')">سلتي</a>
+      <a onclick="showPage('contact')">تواصل معنا</a>
+    </nav>
+  </footer>
 
-    <div class="card">
-      <img src="https://via.placeholder.com/250x150" alt="بطاقة رقمية">
-      <h3>Apple Gift Card</h3>
-      <span class="price">30 دولار</span>
-      <span class="old-price">35 دولار</span>
-      <button class="btn">اشترِ الآن</button>
-    </div>
+  <script>
+    function showPage(page) {
+      const content = document.getElementById("content");
+      if (page === "home") {
+        content.innerHTML = `
+          <h2>المنتجات</h2>
+          <div class="products">
+            <div class="product">
+              <h3>بطاقة ستيم</h3>
+              <p>السعر: 50 ريال</p>
+              <button onclick="addToCart('بطاقة ستيم', 50)">أضف إلى السلة</button>
+            </div>
+            <div class="product">
+              <h3>بطاقة بلايستيشن</h3>
+              <p>السعر: 100 ريال</p>
+              <button onclick="addToCart('بطاقة بلايستيشن', 100)">أضف إلى السلة</button>
+            </div>
+            <div class="product">
+              <h3>بطاقة إكس بوكس</h3>
+              <p>السعر: 75 ريال</p>
+              <button onclick="addToCart('بطاقة إكس بوكس', 75)">أضف إلى السلة</button>
+            </div>
+          </div>
+        `;
+      } else if (page === "cart") {
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+        let html = "<h2>سلتي</h2>";
+        let total = 0;
+        if (cart.length === 0) {
+          html += "<p>السلة فارغة 🛒</p>";
+        } else {
+          cart.forEach(item => {
+            html += `<p>${item.name} - ${item.price} ريال</p>`;
+            total += item.price;
+          });
+          html += `<h3>الإجمالي: ${total} ريال</h3>`;
+        }
+        content.innerHTML = html;
+      } else if (page === "contact") {
+        content.innerHTML = `
+          <h2>تواصل معنا</h2>
+          <ul>
+            <li>📧 الإيميل: support@forsan.com</li>
+            <li>📱 الواتساب: 0500000000</li>
+            <li>📷 إنستغرام: @forsan_store</li>
+          </ul>
+        `;
+      }
+    }
 
-    <div class="card">
-      <img src="https://via.placeholder.com/250x150" alt="بطاقة رقمية">
-      <h3>بطاقة PSN (50 ريال)</h3>
-      <span class="price">50 ر.س</span>
-      <span class="old-price">60 ر.س</span>
-      <button class="btn">اشترِ الآن</button>
-    </div>
-  </section>
+    function addToCart(name, price) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push({ name, price });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert("تمت إضافة " + name + " إلى السلة ✅");
+    }
 
-  <!-- شريط القوائم السفلي -->
-  <div class="navbar-bottom">
-    <a href="#" class="active"><i class="fa-solid fa-house"></i>الرئيسية</a>
-    <a href="#"><i class="fa-solid fa-cart-shopping"></i>سلتي</a>
-    <a href="#"><i class="fa-solid fa-comments"></i>تواصل معنا</a>
-  </div>
-
+    // البداية على الرئيسية
+    showPage("home");
+  </script>
 </body>
 </html>
