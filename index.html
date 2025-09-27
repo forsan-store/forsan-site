@@ -2,144 +2,281 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>متجر فرسان</title>
   <style>
     body {
-      font-family: 'Tahoma', sans-serif;
       margin: 0;
-      padding: 0;
-      background: #111;
+      font-family: "Tajawal", sans-serif;
+      background: linear-gradient(135deg, #2c003e, #4b0082);
       color: #fff;
       text-align: center;
     }
     header {
-      background: #222;
-      padding: 15px;
-      font-size: 1.5em;
+      background: #3a0057;
+      padding: 20px;
+      font-size: 24px;
       color: gold;
+      font-weight: bold;
+    }
+    nav {
+      background: #22002e;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    nav a {
+      color: gold;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .container {
+      padding: 20px;
     }
     .products {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
-      padding: 20px;
+      gap: 20px;
     }
     .product {
-      background: #222;
-      border: 1px solid gold;
+      background: #4b0082;
+      border: 2px solid gold;
       border-radius: 10px;
       padding: 15px;
     }
-    .product h3 { color: gold; }
+    .product img {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 10px;
+    }
+    .stars {
+      color: gold;
+      margin: 5px 0;
+    }
     button {
-      background: gold;
-      color: black;
+      background: linear-gradient(135deg, gold, #fffacd);
+      color: #2c003e;
       border: none;
-      padding: 10px;
+      padding: 10px 15px;
       margin-top: 10px;
       cursor: pointer;
-      border-radius: 5px;
+      border-radius: 6px;
       font-weight: bold;
+      transition: 0.3s;
+      box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
     }
     button:hover {
-      background: #fff;
-      color: black;
+      background: linear-gradient(135deg, #fffacd, gold);
+      transform: scale(1.05);
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
     }
-    .bottom-nav {
-      display: flex;
-      justify-content: space-around;
-      background: #000;
-      padding: 10px 0;
-      position: fixed;
-      bottom: 0;
-      width: 100%;
-      border-top: 2px solid gold;
+    .review {
+      background: #3a0057;
+      border-radius: 10px;
+      padding: 15px;
+      margin: 10px auto;
+      max-width: 500px;
+      position: relative;
     }
-    .bottom-nav a {
-      color: gold;
-      text-decoration: none;
-      font-weight: bold;
-      cursor: pointer;
+    .review button {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: crimson;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      font-size: 12px;
+      box-shadow: none;
     }
-    .bottom-nav a:hover { color: white; }
-    main { padding-bottom: 70px; }
+    .review button:hover {
+      background: darkred;
+      transform: scale(1.1);
+    }
+    footer {
+      margin-top: 20px;
+      padding: 15px;
+      background: #22002e;
+      color: #fff;
+      font-size: 14px;
+    }
+    .section {
+      margin: 40px 0;
+    }
+    input, textarea, select {
+      padding: 8px;
+      margin: 5px;
+      border-radius: 6px;
+      border: none;
+      width: 90%;
+      max-width: 400px;
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>متجر فرسان</h1>
-  </header>
 
-  <main id="content"></main>
+  <header>✨ متجر فرسان ✨</header>
+
+  <nav>
+    <a href="#products">الرئيسية</a>
+    <a href="#cart">سلتي</a>
+    <a href="#contact">تواصل معنا</a>
+    <a href="#reviews">آراء العملاء</a>
+  </nav>
+
+  <div class="container">
+
+    <!-- المنتجات -->
+    <div id="products" class="section">
+      <h2>🎮 بطاقات بلايستيشن بلس</h2>
+      <div class="products">
+        <div class="product">
+          <img src="https://image.api.playstation.com/vulcan/ap/rnd/202305/1117/1aa9e1d3cbdb4d0c9d1916b9c8f43f54.png" alt="بلايستيشن بلس - شهر">
+          <h3>بلايستيشن بلس - 1 شهر</h3>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>30 ريال</p>
+          <button onclick="addToCart('بلايستيشن بلس - 1 شهر', 30)">أضف إلى السلة</button>
+        </div>
+        <div class="product">
+          <img src="https://gmedia.playstation.com/is/image/SIEPDC/ps-plus-3-months-stackable-hero-01-en-13dec21?$facebook$" alt="بلايستيشن بلس - 3 شهور">
+          <h3>بلايستيشن بلس - 3 شهور</h3>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>80 ريال</p>
+          <button onclick="addToCart('بلايستيشن بلس - 3 شهور', 80)">أضف إلى السلة</button>
+        </div>
+        <div class="product">
+          <img src="https://gmedia.playstation.com/is/image/SIEPDC/ps-plus-12-months-stackable-hero-01-en-13dec21?$facebook$" alt="بلايستيشن بلس - 12 شهر">
+          <h3>بلايستيشن بلس - 12 شهر</h3>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p>250 ريال</p>
+          <button onclick="addToCart('بلايستيشن بلس - 12 شهر', 250)">أضف إلى السلة</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- السلة -->
+    <div id="cart" class="section">
+      <h2>🛒 سلتي</h2>
+      <ul id="cartItems"></ul>
+      <p id="total"></p>
+    </div>
+
+    <!-- التواصل -->
+    <div id="contact" class="section">
+      <h2>📞 تواصل معنا</h2>
+      <p>واتساب: <a href="https://wa.me/966500000000" target="_blank" style="color:gold;">اضغط هنا</a></p>
+      <p>ايميل: support@forsan.com</p>
+    </div>
+
+    <!-- آراء العملاء -->
+    <div id="reviews" class="section">
+      <h2>⭐ آراء عملاؤنا</h2>
+
+      <div id="reviewsList"></div>
+
+      <h3>💬 أضف رأيك</h3>
+      <input type="text" id="reviewName" placeholder="اسمك"><br>
+      <select id="reviewStars">
+        <option value="⭐">⭐</option>
+        <option value="⭐⭐">⭐⭐</option>
+        <option value="⭐⭐⭐">⭐⭐⭐</option>
+        <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+        <option value="⭐⭐⭐⭐⭐" selected>⭐⭐⭐⭐⭐</option>
+      </select><br>
+      <textarea id="reviewText" rows="3" placeholder="اكتب تعليقك هنا"></textarea><br>
+      <button onclick="addReview()">إرسال رأيي</button>
+    </div>
+
+  </div>
 
   <footer>
-    <nav class="bottom-nav">
-      <a onclick="showPage('home')">الرئيسية</a>
-      <a onclick="showPage('cart')">سلتي</a>
-      <a onclick="showPage('contact')">تواصل معنا</a>
-    </nav>
+    <p>جميع الحقوق محفوظة © 2025 متجر فرسان</p>
   </footer>
 
   <script>
-    function showPage(page) {
-      const content = document.getElementById("content");
-      if (page === "home") {
-        content.innerHTML = `
-          <h2>المنتجات</h2>
-          <div class="products">
-            <div class="product">
-              <h3>بطاقة ستيم</h3>
-              <p>السعر: 50 ريال</p>
-              <button onclick="addToCart('بطاقة ستيم', 50)">أضف إلى السلة</button>
-            </div>
-            <div class="product">
-              <h3>بطاقة بلايستيشن</h3>
-              <p>السعر: 100 ريال</p>
-              <button onclick="addToCart('بطاقة بلايستيشن', 100)">أضف إلى السلة</button>
-            </div>
-            <div class="product">
-              <h3>بطاقة إكس بوكس</h3>
-              <p>السعر: 75 ريال</p>
-              <button onclick="addToCart('بطاقة إكس بوكس', 75)">أضف إلى السلة</button>
-            </div>
+    // ---------------- السلة ----------------
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      localStorage.setItem('cart', JSON.stringify(cart));
+      displayCart();
+    }
+
+    function displayCart() {
+      let cartItems = document.getElementById("cartItems");
+      let total = document.getElementById("total");
+      cartItems.innerHTML = "";
+      let sum = 0;
+      cart.forEach((item, index) => {
+        cartItems.innerHTML += `<li>${item.name} - ${item.price} ريال 
+          <button onclick="removeItem(${index})">❌</button></li>`;
+        sum += item.price;
+      });
+      total.innerText = "الإجمالي: " + sum + " ريال";
+    }
+
+    function removeItem(index) {
+      cart.splice(index, 1);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      displayCart();
+    }
+
+    displayCart();
+
+    // ---------------- آراء العملاء ----------------
+    let reviews = JSON.parse(localStorage.getItem('reviews')) || [
+      {name:"محمد", stars:"⭐⭐⭐⭐⭐", text:"خدمة سريعة وأسعار ممتازة 👌", date:"26/09/2025 08:15 م"},
+      {name:"سارة", stars:"⭐⭐⭐⭐", text:"التجربة جميلة، أنصح بالشراء 👍", date:"26/09/2025 09:40 م"},
+      {name:"أحمد", stars:"⭐⭐⭐⭐⭐", text:"أفضل متجر بطاقات رقمية ❤️", date:"27/09/2025 12:00 ص"}
+    ];
+
+    function displayReviews() {
+      let reviewsList = document.getElementById("reviewsList");
+      reviewsList.innerHTML = "";
+      reviews.forEach((r, index) => {
+        reviewsList.innerHTML += `
+          <div class="review">
+            <button onclick="deleteReview(${index})">❌</button>
+            <p><strong>${r.name}:</strong> ${r.stars}</p>
+            <p>${r.text}</p>
+            <small>📅 ${r.date}</small>
           </div>
         `;
-      } else if (page === "cart") {
-        let cart = JSON.parse(localStorage.getItem("cart")) || [];
-        let html = "<h2>سلتي</h2>";
-        let total = 0;
-        if (cart.length === 0) {
-          html += "<p>السلة فارغة 🛒</p>";
-        } else {
-          cart.forEach(item => {
-            html += `<p>${item.name} - ${item.price} ريال</p>`;
-            total += item.price;
-          });
-          html += `<h3>الإجمالي: ${total} ريال</h3>`;
-        }
-        content.innerHTML = html;
-      } else if (page === "contact") {
-        content.innerHTML = `
-          <h2>تواصل معنا</h2>
-          <ul>
-            <li>📧 الإيميل: support@forsan.com</li>
-            <li>📱 الواتساب: 0500000000</li>
-            <li>📷 إنستغرام: @forsan_store</li>
-          </ul>
-        `;
+      });
+    }
+
+    function addReview() {
+      let name = document.getElementById("reviewName").value || "عميل مجهول";
+      let stars = document.getElementById("reviewStars").value;
+      let text = document.getElementById("reviewText").value;
+
+      if(text.trim() === "") return alert("من فضلك اكتب تعليقك");
+
+      // جلب التاريخ الحالي
+      let now = new Date();
+      let date = now.toLocaleDateString("ar-EG") + " " + 
+                 now.toLocaleTimeString("ar-EG", {hour: '2-digit', minute:'2-digit'});
+
+      reviews.push({name, stars, text, date});
+      localStorage.setItem('reviews', JSON.stringify(reviews));
+      displayReviews();
+
+      document.getElementById("reviewName").value = "";
+      document.getElementById("reviewText").value = "";
+      document.getElementById("reviewStars").value = "⭐⭐⭐⭐⭐";
+    }
+
+    function deleteReview(index) {
+      if(confirm("هل تريد حذف هذا الرأي؟")) {
+        reviews.splice(index, 1);
+        localStorage.setItem('reviews', JSON.stringify(reviews));
+        displayReviews();
       }
     }
 
-    function addToCart(name, price) {
-      let cart = JSON.parse(localStorage.getItem("cart")) || [];
-      cart.push({ name, price });
-      localStorage.setItem("cart", JSON.stringify(cart));
-      alert("تمت إضافة " + name + " إلى السلة ✅");
-    }
-
-    // البداية على الرئيسية
-    showPage("home");
+    displayReviews();
   </script>
+
 </body>
 </html>
