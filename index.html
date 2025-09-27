@@ -6,295 +6,425 @@
 <title>فرسان — بطاقات رقمية</title>
 <style>
   :root{
-    --bg:#0b0b0b;
-    --surface:#0f0f0f;
-    --muted:#9aa0a6;
-    --white:#ffffff;
-    --gold:#d4af37; /* ذهبي */
-    --accent:#ffffff; /* النص الأبيض */
-    --card:#171717;
-    --radius:12px;
+    --bg:#0D0D0D;
+    --panel:#121212;
+    --text:#FFFFFF;
+    --muted:#CFCFCF;
+    --gold-light:#FFD700;
+    --gold-dark:#B8860B;
+    --glass: rgba(255,255,255,0.03);
   }
   *{box-sizing:border-box}
   body{
     margin:0;
-    font-family: "Noto Kufi Arabic", "Segoe UI", Tahoma, sans-serif;
+    font-family: "Tajawal", "Noto Kufi Arabic", sans-serif;
     background:var(--bg);
-    color:var(--accent);
+    color:var(--text);
     -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
   }
 
-  /* header */
+  /* ===== Header / Hero ===== */
   header{
-    background:linear-gradient(0deg, rgba(255,255,255,0.02), rgba(255,255,255,0.02));
     padding:14px 16px;
-    position:sticky;
-    top:0;
-    z-index:50;
-    backdrop-filter: blur(4px);
     border-bottom:1px solid rgba(255,255,255,0.03);
-    display:flex;
-    align-items:center;
-    gap:12px;
+    display:flex;align-items:center;gap:12px;
+    position:sticky;top:0;background:linear-gradient(0deg, rgba(0,0,0,0.45), rgba(0,0,0,0.35));
+    z-index:60;
   }
-  .hamb{
-    width:38px;height:38px;border-radius:10px;display:grid;place-items:center;
-    background:transparent;border:1px solid rgba(255,255,255,0.06);
-  }
-  .logo {
-    display:flex;align-items:center;gap:10px;margin-inline:auto;
-  }
-  .logo .mark{
-    width:62px;height:40px;background:linear-gradient(180deg,#0b0b0b,#111);
-    display:flex;align-items:center;justify-content:center;border-radius:8px;
-    border:1px solid rgba(255,255,255,0.04);
-  }
-  .logo .mark span{
-    color:var(--white);font-weight:800;font-size:26px;letter-spacing:2px;
-  }
-  .logo .title{
-    display:flex;flex-direction:column;line-height:1;
-  }
-  .logo h1{margin:0;font-size:18px;color:var(--white);}
-  .logo p{margin:0;font-size:12px;color:var(--muted);}
+  .logo {display:flex;align-items:center;gap:10px;margin-inline:auto}
+  .logo .mark{width:56px;height:36px;border-radius:8px;background:linear-gradient(180deg,#0b0b0b,#111);display:flex;align-items:center;justify-content:center;border:1px solid rgba(255,255,255,0.03)}
+  .logo .mark span{font-weight:800;color:var(--gold-light);font-size:20px;letter-spacing:1px}
+  .logo .title h1{margin:0;font-size:18px;color:var(--gold-light);letter-spacing:1px}
+  .logo .title p{margin:0;font-size:12px;color:var(--muted)}
 
-  /* hero */
-  .hero{padding:22px 18px;text-align:center;}
-  .hero h2{font-size:20px;margin:10px 0 6px}
-  .hero p{color:var(--muted);margin:0 0 18px}
+  .hero{padding:24px 18px;text-align:center}
+  .hero h2{font-size:20px;margin:8px 0;color:var(--gold-light)}
+  .hero p{color:var(--muted);margin:0 0 16px}
 
-  /* grid */
-  .container{padding:0 14px 80px;max-width:1100px;margin:0 auto}
-  .grid{
+  .container{max-width:1100px;margin:0 auto;padding:0 14px 90px}
+
+  /* ===== Products Grid ===== */
+  .products-grid{
     display:grid;
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
+    grid-template-columns: repeat(auto-fill,minmax(220px,1fr));
+    gap:16px;margin-top:12px;
   }
-  @media(min-width:900px){ .grid{grid-template-columns:repeat(3,1fr);} }
+  .product-card{
+    background:var(--panel);border-radius:12px;padding:14px;border:1px solid rgba(255,255,255,0.03);
+    box-shadow:0 6px 18px rgba(0,0,0,0.5);display:flex;flex-direction:column;gap:10px;
+  }
+  .thumb{height:150px;border-radius:8px;background:linear-gradient(180deg,#0f0f0f,#151515);display:flex;align-items:center;justify-content:center;overflow:hidden}
+  .thumb img{width:100%;height:100%;object-fit:cover}
 
-  .card{
-    background:var(--card);
-    border-radius:12px;
-    padding:12px;
-    border:1px solid rgba(255,255,255,0.03);
-    display:flex;flex-direction:column;gap:8px;
-  }
-  .thumb{
-    background:linear-gradient(180deg,#0f0f0f,#151515);
-    height:170px;border-radius:10px;display:flex;align-items:center;justify-content:center;
-    overflow:hidden;border:1px solid rgba(255,255,255,0.02);
-  }
-  .thumb img{max-width:100%;height:100%;object-fit:cover}
-  .title{font-weight:700;font-size:15px;margin-top:6px}
-  .desc{color:var(--muted);font-size:13px;margin:2px 0 8px}
-  .price-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
-  .price{color:var(--white);font-weight:700}
-  .old{color:#7f2b2b;text-decoration:line-through;font-size:13px}
+  .title{font-weight:800;font-size:15px}
+  .desc{color:var(--muted);font-size:13px;margin:0}
+
+  .price-wrap{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:8px}
+  .price{font-weight:900;font-size:17px;color:var(--text)}
+  .old-price{color:#FF6B6B;text-decoration:line-through;font-size:13px}
+  .savings{font-size:12px;color:var(--gold-light);background:rgba(255,215,0,0.06);padding:6px;border-radius:8px}
+
+  .card-actions{display:flex;gap:8px;flex-direction:column}
   .btn{
-    background:transparent;border-radius:10px;padding:10px 12px;border:1px solid rgba(255,255,255,0.06);
-    color:var(--white);font-weight:600;text-align:center;cursor:pointer;
+    padding:10px;border-radius:10px;font-weight:800;text-decoration:none;text-align:center;cursor:pointer;border:1px solid rgba(255,255,255,0.04)
+  }
+  .btn-buy{background:linear-gradient(90deg,var(--gold-light),var(--gold-dark));color:#0b0b0b}
+  .btn-cart{background:transparent;color:var(--text);border:1px solid rgba(255,255,255,0.06)}
+
+  /* ===== Footer ===== */
+  footer{padding:22px 14px;border-top:1px solid rgba(255,255,255,0.03);color:var(--muted);font-size:13px}
+  .pay-icons img{height:28px;filter:grayscale(1) brightness(.9);opacity:.95;margin-inline:6px}
+
+  /* ===== Floating WhatsApp ===== */
+  #whatsapp-fab{
+    position:fixed;bottom:86px;left:18px;z-index:99;display:flex;align-items:center;gap:10px;
+  }
+  #whatsapp-fab .circle{width:60px;height:60px;border-radius:50%;background:linear-gradient(90deg,var(--gold-light),var(--gold-dark));display:grid;place-items:center;box-shadow:0 8px 26px rgba(0,0,0,0.6)}
+  #whatsapp-fab .circle img{width:34px;height:34px;filter:invert(1)}
+  #whatsapp-fab .label{background:var(--panel);padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.03);color:var(--gold-light);font-weight:800;font-size:13px}
+
+  /* ===== Bottom Navigation Bar ===== */
+  .bottom-nav{
+    position:fixed;left:0;right:0;bottom:0;z-index:1000;
+    display:flex;justify-content:space-around;align-items:center;gap:8px;
+    background:linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.8));
+    border-top:1px solid rgba(255,255,255,0.03);padding:8px 10px;
+    backdrop-filter: blur(6px);
+  }
+  .nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--muted);font-size:13px}
+  .nav-btn .icon{width:46px;height:46px;border-radius:10px;display:grid;place-items:center;background:transparent;border:1px solid rgba(255,255,255,0.03)}
+  .nav-btn.active, .nav-btn:active{color:var(--gold-light)}
+  .cart-badge{position:relative}
+  .cart-count{
+    position:absolute;top:-6px;left:-6px;background:var(--gold-light);color:#000;border-radius:10px;padding:2px 6px;font-weight:800;font-size:12px;border:2px solid rgba(255,255,255,0.06)
   }
 
-  /* footer */
-  footer{padding:24px 18px;border-top:1px solid rgba(255,255,255,0.03);margin-top:28px}
-  .footer-grid{display:flex;gap:20px;flex-wrap:wrap;align-items:center;justify-content:space-between}
-  .pay-icons{display:flex;gap:8px;align-items:center}
-  .pay-icons img{height:30px;filter:grayscale(1) brightness(.9);opacity:.95}
-
-  /* floating whatsapp (black + gold accent) */
-  .whats{
-    position:fixed;bottom:20px;left:18px;z-index:60;display:flex;align-items:center;gap:10px;
+  /* ===== Modal Cart (simple) ===== */
+  .cart-modal{
+    position:fixed;right:16px;left:16px;bottom:76px;z-index:1200;background:var(--panel);border-radius:12px;padding:12px;border:1px solid rgba(255,255,255,0.04);
+    max-width:680px;margin-inline:auto;box-shadow:0 12px 40px rgba(0,0,0,0.6);display:none;flex-direction:column;gap:10px;
   }
-  .whats .circle{
-    width:62px;height:62px;border-radius:50%;background:linear-gradient(180deg,#0b0b0b,#111);
-    display:grid;place-items:center;border:3px solid var(--gold);box-shadow:0 6px 18px rgba(0,0,0,0.6);
-  }
-  .whats .circle img{width:34px;height:34px;filter:invert(1) hue-rotate(160deg) saturate(0);}
-  .whats .label{
-    background:var(--surface);padding:8px 10px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);
-    color:var(--gold);font-weight:700;margin-right:8px;font-size:13px;
-  }
+  .cart-modal.show{display:flex}
+  .cart-item{display:flex;gap:10px;align-items:center}
+  .cart-item .c-thumb{width:56px;height:40px;border-radius:8px;background:#0f0f0f;display:grid;place-items:center;overflow:hidden}
+  .cart-item .c-thumb img{width:100%;height:100%;object-fit:cover}
+  .cart-item .c-info{flex:1}
+  .cart-summary{display:flex;justify-content:space-between;align-items:center;padding-top:8px;border-top:1px dashed rgba(255,255,255,0.03)}
+  .empty-msg{color:var(--muted);text-align:center;padding:18px 0}
 
-  /* testimonial */
-  .testi{display:flex;gap:12px;margin-top:22px;overflow:hidden}
-  .testi .box{flex:1;background:linear-gradient(180deg,#0e0e0e,#131313);padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03)}
-  .stars{color:var(--gold);font-size:16px}
-
-  /* small helpers */
-  .tag{background:rgba(255,255,255,0.03);padding:6px 10px;border-radius:8px;font-size:13px;color:var(--muted);display:inline-block}
-
-  /* utilities */
-  .row{display:flex;gap:10px;align-items:center}
-  a{color:inherit;text-decoration:none}
-  .center{display:flex;align-items:center;justify-content:center}
+  /* responsive */
+  @media(min-width:900px){ .container{padding-bottom:120px} .bottom-nav{display:none} #whatsapp-fab{left:32px} }
 </style>
 </head>
 <body>
 
 <header>
-  <div class="hamb" title="القائمة">
-    ☰
-  </div>
-
   <div class="logo" aria-label="لوغو فرسان">
-    <div class="mark" role="img" aria-hidden="true">
-      <span>ف</span>
-    </div>
+    <div class="mark" aria-hidden="true"><span>ف</span></div>
     <div class="title">
       <h1>فَرْسَان</h1>
-      <p style="font-size:11px;color:var(--muted)">بطاقات رقمية · متاجر</p>
+      <p>بطاقات رقمية · متاجر</p>
     </div>
   </div>
-
-  <div style="width:40px;height:40px;border-radius:8px;border:1px solid rgba(255,255,255,0.03);display:grid;place-items:center">🔍</div>
 </header>
 
 <section class="hero">
   <div class="container">
-    <h2>بطاقات رقمية جاهزة — اشحن وبيع بسرعة</h2>
-    <p>بيع بطاقات الألعاب، شحن رصيد، بطاقات هدايا — كل شيء رقمي ومهيأ للبطاقات. اضغط على أي بطاقة للتفاصيل أو أضفها إلى السلة.</p>
+    <h2>بطاقات رقمية جاهزة — توصلك فوراً بعد الشراء</h2>
+    <p>اختر من تشكيلة واسعة من بطاقات الألعاب، الشحن، والكروت العالمية.</p>
   </div>
 </section>
 
-<main class="container">
-  <!-- categories / quick filters -->
-  <div style="display:flex;gap:10px;align-items:center;margin-bottom:12px;flex-wrap:wrap">
-    <div class="tag">الأكثر مبيعاً</div>
-    <div class="tag">ألعاب</div>
-    <div class="tag">شحن</div>
-    <div class="tag">هدايا</div>
+<main class="container" id="top">
+  <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px">
+    <div class="tag" style="background:var(--panel);padding:8px 10px;border-radius:8px;color:var(--muted)">الأكثر مبيعاً</div>
+    <div class="tag" style="background:var(--panel);padding:8px 10px;border-radius:8px;color:var(--muted)">بلاي ستيشن</div>
+    <div class="tag" style="background:var(--panel);padding:8px 10px;border-radius:8px;color:var(--muted)">ستيم</div>
   </div>
 
-  <!-- products grid -->
-  <div class="grid" id="products">
-    <!-- card template (كرر حسب الحاجة) -->
-    <article class="card">
-      <div class="thumb">
-        <!-- استبدل الصورة برابط البطاقة -->
-        <img src="https://via.placeholder.com/420x280/1a1a1a/ffffff?text=بطاقة+1" alt="بطاقة رقمية">
-      </div>
-      <div>
-        <div class="title">بطاقة شحن (50 ريال)</div>
-        <div class="desc">بطاقة شحن سريعة — رمز يُرسل فوراً بعد الشراء</div>
-      </div>
-      <div class="price-row">
+  <section id="products" class="products-grid" aria-live="polite">
+    <!-- المنتج 1 -->
+    <article class="product-card" data-id="p1" data-title="كود ستيم" data-price="20" data-old="25">
+      <div class="thumb"><img src="https://via.placeholder.com/420x280/1a1a1a/ffffff?text=Steam+Code" alt="Steam Code"></div>
+      <div class="title">كود ستيم</div>
+      <div class="desc">كود رقمي مفعّل فوراً</div>
+      <div class="price-wrap">
         <div>
-          <div class="price">ر.س 49</div>
-          <div class="old">ر.س 59</div>
+          <div class="price">20</div>
+          <div class="old-price">25</div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
-          <button class="btn" style="background:linear-gradient(180deg,#0b0b0b,#101010);border:1px solid rgba(212,175,55,0.9);color:var(--gold)">اشترِ الآن</button>
-          <button class="btn">إضافة للسلة</button>
-        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn btn-buy">اشترِ الآن</button>
+        <button class="btn btn-cart add-to-cart">إضافة للسلة</button>
       </div>
     </article>
 
-    <article class="card">
-      <div class="thumb">
-        <img src="https://via.placeholder.com/420x280/242424/ffffff?text=بطاقة+2" alt="بطاقة رقمية">
-      </div>
-      <div>
-        <div class="title">كود ستيم (20$)</div>
-        <div class="desc">كود رقمي مفعّل فوراً</div>
-      </div>
-      <div class="price-row">
+    <!-- المنتج 2 -->
+    <article class="product-card" data-id="p2" data-title="بطاقة شحن (50 ر.س)" data-price="49" data-old="59">
+      <div class="thumb"><img src="https://via.placeholder.com/420x280/242424/ffffff?text=شحن+50" alt="شحن 50"></div>
+      <div class="title">بطاقة شحن (50 ر.س)</div>
+      <div class="desc">رمز يُرسل فوراً بعد الشراء</div>
+      <div class="price-wrap">
         <div>
-          <div class="price">دولار 20</div>
-          <div class="old">دولار 25</div>
+          <div class="price">49</div>
+          <div class="old-price">59</div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
-          <button class="btn" style="background:linear-gradient(180deg,#0b0b0b,#101010);border:1px solid rgba(212,175,55,0.9);color:var(--gold)">اشترِ الآن</button>
-          <button class="btn">إضافة للسلة</button>
-        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn btn-buy">اشترِ الآن</button>
+        <button class="btn btn-cart add-to-cart">إضافة للسلة</button>
       </div>
     </article>
 
-    <article class="card">
-      <div class="thumb">
-        <img src="https://via.placeholder.com/420x280/2a2a2a/ffffff?text=بطاقة+3" alt="بطاقة رقمية">
-      </div>
-      <div>
-        <div class="title">بطاقة PSN (50 ريال)</div>
-        <div class="desc">صالح للاستخدام في السعودية</div>
-      </div>
-      <div class="price-row">
+    <!-- المنتج 3 -->
+    <article class="product-card" data-id="p3" data-title="Apple Gift Card" data-price="30" data-old="35">
+      <div class="thumb"><img src="https://via.placeholder.com/420x280/2a2a2a/ffffff?text=Apple+Gift" alt="Apple Gift"></div>
+      <div class="title">Apple Gift Card</div>
+      <div class="desc">كود آيتونز فوري</div>
+      <div class="price-wrap">
         <div>
-          <div class="price">ر.س 50</div>
+          <div class="price">30</div>
+          <div class="old-price">35</div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
-          <button class="btn" style="background:linear-gradient(180deg,#0b0b0b,#101010);border:1px solid rgba(212,175,55,0.9);color:var(--gold)">اشترِ الآن</button>
-          <button class="btn">إضافة للسلة</button>
-        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn btn-buy">اشترِ الآن</button>
+        <button class="btn btn-cart add-to-cart">إضافة للسلة</button>
       </div>
     </article>
 
-    <article class="card">
-      <div class="thumb">
-        <img src="https://via.placeholder.com/420x280/333333/ffffff?text=بطاقة+4" alt="بطاقة رقمية">
-      </div>
-      <div>
-        <div class="title">Apple Gift Card</div>
-        <div class="desc">كود آيتونز فوري</div>
-      </div>
-      <div class="price-row">
+    <!-- المنتج 4 -->
+    <article class="product-card" data-id="p4" data-title="بطاقة PSN (50 ر.س)" data-price="50">
+      <div class="thumb"><img src="https://via.placeholder.com/420x280/333333/ffffff?text=PSN+50" alt="PSN 50"></div>
+      <div class="title">بطاقة PSN (50 ر.س)</div>
+      <div class="desc">صالح للاستخدام في السعودية</div>
+      <div class="price-wrap">
         <div>
-          <div class="price">دولار 30</div>
+          <div class="price">50</div>
         </div>
-        <div style="display:flex;flex-direction:column;gap:8px;align-items:flex-start">
-          <button class="btn" style="background:linear-gradient(180deg,#0b0b0b,#101010);border:1px solid rgba(212,175,55,0.9);color:var(--gold)">اشترِ الآن</button>
-          <button class="btn">إضافة للسلة</button>
-        </div>
+      </div>
+      <div class="card-actions">
+        <button class="btn btn-buy">اشترِ الآن</button>
+        <button class="btn btn-cart add-to-cart">إضافة للسلة</button>
       </div>
     </article>
 
-  </div>
+  </section>
 
-  <!-- testimonials -->
-  <section style="margin-top:22px">
-    <h3 style="margin:0 0 10px">آراء العملاء</h3>
-    <div class="testi">
-      <div class="box">
-        <div class="stars">★★★★★</div>
-        <p style="color:var(--muted)">"سهل وسريع — استلمت الكود بعد الدفع بثواني!"</p>
-        <p style="text-align:left;color:var(--muted);font-size:13px;margin:10px 0 0"> — عميل سعيد</p>
+  <!-- Testimonials -->
+  <section style="margin-top:20px">
+    <h3 style="margin:6px 0 12px;color:var(--gold-light)">آراء العملاء</h3>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="testimonial" style="flex:1;min-width:220px">
+        <div style="font-weight:800;color:var(--gold-light)">★★★★★</div>
+        <p class="muted">"استلمت الكود فوراً — خدمة سريعة وأسعار ممتازة."</p>
+        <p style="text-align:left;color:var(--muted);margin-top:8px">— عميل</p>
       </div>
-      <div class="box">
-        <div class="stars">★★★★★</div>
-        <p style="color:var(--muted)">"الأسعار مناسبة والدعم متعاون." </p>
-        <p style="text-align:left;color:var(--muted);font-size:13px;margin:10px 0 0"> — زبون</p>
+      <div class="testimonial" style="flex:1;min-width:220px">
+        <div style="font-weight:800;color:var(--gold-light)">★★★★★</div>
+        <p class="muted">"التعامل سهل والدعم متجاوب."</p>
+        <p style="text-align:left;color:var(--muted);margin-top:8px">— زبون</p>
       </div>
     </div>
   </section>
-
 </main>
 
-<!-- floating whatsapp -->
-<div class="whats" aria-hidden="false">
-  <div class="label">تواصل معنا</div>
-  <a class="circle" href="https://wa.me/966XXXXXXXXX" target="_blank" rel="noopener">
-    <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23fff'><path d='M20.5 3.5A11.9 11.9 0 0 0 3.5 20.5L2 22l1.6-4.7A11.9 11.9 0 1 0 20.5 3.5zM12 21c-4.9 0-9-4-9-9s4.1-9 9-9 9 4 9 9-4.1 9-9 9z'/></svg>" alt="whatsapp">
-  </a>
+<!-- Cart modal -->
+<div id="cartModal" class="cart-modal" aria-hidden="true">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <strong>سلّتي</strong>
+    <button id="closeCart" class="btn" style="background:transparent;border:1px solid rgba(255,255,255,0.05)">إغلاق</button>
+  </div>
+  <div id="cartItems"></div>
+  <div class="cart-summary">
+    <div class="muted">الإجمالي</div>
+    <div id="cartTotal" style="font-weight:800">0 ر.س</div>
+  </div>
+  <a id="checkoutBtn" class="btn btn-buy" href="#" style="margin-top:8px">الدفع الآن</a>
 </div>
 
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div>
-        <div style="font-weight:800;font-size:16px">فرسان</div>
-        <div style="color:var(--muted);margin-top:6px">بيع وشراء بطاقات رقمية بسرعة وسهولة.</div>
-      </div>
-      <div class="pay-icons" aria-hidden="true">
-        <!-- استبدل بالصور الحقيقية -->
-        <img src="https://via.placeholder.com/64x30/ffffff/000?text=Visa" alt="visa">
-        <img src="https://via.placeholder.com/64x30/ffffff/000?text=Mada" alt="mada">
-        <img src="https://via.placeholder.com/64x30/ffffff/000?text=STC" alt="stc">
-      </div>
-    </div>
+<!-- floating WhatsApp -->
+<div id="whatsapp-fab" aria-hidden="false">
+  <div class="label" style="display:none"></div>
+  <a class="circle" href="https://wa.me/966500000000" target="_blank" rel="noopener" style="text-decoration:none;display:grid;place-items:center"><img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28' viewBox='0 0 24 24' fill='%23000'><path d='M20.5 3.5A11.9 11.9 0 0 0 3.5 20.5L2 22l1.6-4.7A11.9 11.9 0 1 0 20.5 3.5zM12 21c-4.9 0-9-4-9-9s4.1-9 9-9 9 4 9 9-4.1 9-9 9z'/></svg>" alt="whatsapp"></a>
+</div>
 
-    <div style="margin-top:18px;color:var(--muted);font-size:13px">© 2025 فرسان — جميع الحقوق محفوظة</div>
+<!-- bottom nav -->
+<nav class="bottom-nav" role="navigation" aria-label="القائمة السفلية">
+  <a href="#top" class="nav-btn" id="nav-home">
+    <div class="icon">🏠</div>
+    <div>الرئيسية</div>
+  </a>
+
+  <button class="nav-btn cart-badge" id="nav-cart" aria-controls="cartModal" aria-expanded="false">
+    <div class="icon">🛒</div>
+    <div>سلّتي</div>
+    <div class="cart-count" id="cartCount" style="display:none">0</div>
+  </button>
+
+  <a href="https://wa.me/966500000000" class="nav-btn" id="nav-contact" target="_blank" rel="noopener">
+    <div class="icon">💬</div>
+    <div>تواصل</div>
+  </a>
+</nav>
+
+<footer>
+  <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;max-width:1100px;margin:0 auto">
+    <div>
+      <div style="font-weight:800;font-size:16px">فَرْسَان</div>
+      <div style="color:var(--muted);margin-top:6px">بيع وشراء بطاقات رقمية بسرعة وسهولة.</div>
+    </div>
+    <div class="pay-icons" aria-hidden="true">
+      <img src="https://via.placeholder.com/80x28/ffffff/000?text=Visa" alt="visa">
+      <img src="https://via.placeholder.com/80x28/ffffff/000?text=Mada" alt="mada">
+      <img src="https://via.placeholder.com/80x28/ffffff/000?text=STC" alt="stc">
+    </div>
   </div>
+  <div style="text-align:center;margin-top:14px;color:var(--muted);font-size:13px">© 2025 فرسان — جميع الحقوق محفوظة</div>
 </footer>
 
+<script>
+/* ===== Price formatting & savings (same logic) ===== */
+function formatSAR(num){
+  if(isNaN(num)) return num;
+  return new Intl.NumberFormat('ar-SA',{style:'currency',currency:'SAR'}).format(num);
+}
+
+/* initialize product cards display */
+document.querySelectorAll('.product-card').forEach(card=>{
+  const priceEl = card.querySelector('.price');
+  const oldEl = card.querySelector('.old-price');
+  const saveEl = card.querySelector('.savings');
+
+  const price = parseFloat(card.dataset.price || (priceEl? priceEl.textContent : NaN));
+  const old = parseFloat(card.dataset.old || (oldEl? oldEl.textContent : NaN));
+
+  if(!isNaN(price) && priceEl) priceEl.textContent = formatSAR(price);
+  if(!isNaN(old) && oldEl) oldEl.textContent = formatSAR(old);
+
+  if(!isNaN(price) && !isNaN(old) && old > price && saveEl){
+    const diff = old - price;
+    const perc = Math.round((diff/old)*100);
+    saveEl.textContent = `وفّر ${formatSAR(diff)} (${perc}%)`;
+  }
+});
+
+/* ===== Simple cart logic (in-memory) ===== */
+const CART = [];
+const cartCountEl = document.getElementById('cartCount');
+const cartModal = document.getElementById('cartModal');
+const cartItemsEl = document.getElementById('cartItems');
+const cartTotalEl = document.getElementById('cartTotal');
+
+function updateCartBadge(){
+  const count = CART.reduce((s,i)=>s+i.qty,0);
+  if(count>0){
+    cartCountEl.style.display='inline-block';
+    cartCountEl.textContent = count;
+  } else {
+    cartCountEl.style.display='none';
+  }
+}
+
+function renderCart(){
+  cartItemsEl.innerHTML = '';
+  if(CART.length===0){
+    cartItemsEl.innerHTML = '<div class="empty-msg">سلة التسوق فارغة</div>';
+    cartTotalEl.textContent = formatSAR(0);
+    return;
+  }
+  let total = 0;
+  CART.forEach(item=>{
+    const div = document.createElement('div');
+    div.className = 'cart-item';
+    div.innerHTML = `
+      <div class="c-thumb"><img src="${item.img}" alt=""></div>
+      <div class="c-info">
+        <div style="font-weight:800">${item.title}</div>
+        <div class="muted" style="font-size:13px">${formatSAR(item.price)} × ${item.qty}</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;align-items:flex-end">
+        <button class="btn" data-id="${item.id}" onclick="removeFromCart('${item.id}')" style="background:transparent;border:1px solid rgba(255,255,255,0.05)">حذف</button>
+      </div>
+    `;
+    cartItemsEl.appendChild(div);
+    total += item.price * item.qty;
+  });
+  cartTotalEl.textContent = formatSAR(total);
+}
+
+function addToCartCard(cardEl){
+  const id = cardEl.dataset.id;
+  const title = cardEl.dataset.title || cardEl.querySelector('.title').textContent;
+  const price = parseFloat(cardEl.dataset.price) || 0;
+  const img = cardEl.querySelector('.thumb img') ? cardEl.querySelector('.thumb img').src : '';
+  const existing = CART.find(i=>i.id===id);
+  if(existing){ existing.qty += 1; }
+  else CART.push({id, title, price, img, qty:1});
+  updateCartBadge();
+  renderCart();
+  // brief feedback
+  cardEl.querySelector('.btn-cart').textContent = 'تم الإضافة ✓';
+  setTimeout(()=>{ cardEl.querySelector('.btn-cart').textContent = 'إضافة للسلة'; },900);
+}
+
+/* attach add-to-cart buttons */
+document.querySelectorAll('.add-to-cart').forEach(btn=>{
+  btn.addEventListener('click', (e)=>{
+    const card = e.target.closest('.product-card');
+    addToCartCard(card);
+  });
+});
+
+/* cart modal toggle */
+document.getElementById('nav-cart').addEventListener('click', ()=>{
+  const expanded = document.getElementById('nav-cart').getAttribute('aria-expanded') === 'true';
+  document.getElementById('nav-cart').setAttribute('aria-expanded', String(!expanded));
+  cartModal.classList.toggle('show');
+});
+
+/* close cart */
+document.getElementById('closeCart').addEventListener('click', ()=> cartModal.classList.remove('show'));
+
+/* Checkout button (opens whatsapp with summary) */
+document.getElementById('checkoutBtn').addEventListener('click', (e)=>{
+  e.preventDefault();
+  if(CART.length===0){ alert('سلة التسوق فارغة'); return; }
+  // prepare message
+  let msg = 'طلب من فرسان:%0A';
+  CART.forEach(it => {
+    msg += `${it.title} - ${it.qty} × ${formatSAR(it.price)}%0A`;
+  });
+  const total = CART.reduce((s,i)=>s+i.price*i.qty,0);
+  msg += `الإجمالي: ${formatSAR(total)}`;
+  // open whatsapp
+  const wa = 'https://wa.me/966500000000?text=' + encodeURIComponent(msg);
+  window.open(wa,'_blank');
+});
+
+/* close cart when clicking outside (optional) */
+document.addEventListener('click', (e)=>{
+  if(cartModal.classList.contains('show')){
+    const inside = cartModal.contains(e.target) || document.getElementById('nav-cart').contains(e.target);
+    if(!inside) cartModal.classList.remove('show');
+  }
+});
+
+/* navigate active state - highlight simple */
+document.querySelectorAll('.nav-btn').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    // if anchor link, let browser scroll; active resets after short delay
+    setTimeout(()=>btn.classList.remove('active'),1200);
+  });
+});
+
+/* initial badge hide */
+updateCartBadge();
+renderCart();
+</script>
+
 </body>
-  </html>
+</html>
