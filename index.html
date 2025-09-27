@@ -3,46 +3,85 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>موقعي التجريبي</title>
+  <title>موقعي الفخم</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
       margin: 0;
       padding: 0;
+      font-family: 'Tahoma', sans-serif;
+      background-color: #000; /* خلفية الموقع أسود */
+      color: #fff; /* النص أبيض */
       text-align: center;
     }
     header {
-      background: linear-gradient(90deg, #444, #d4af37);
-      color: white;
-      padding: 20px;
+      padding: 60px 20px;
+      background: #000;
     }
     h1 {
-      margin: 0;
+      font-size: 3em;
+      color: #FFD700; /* ذهبي */
+      margin-bottom: 10px;
+      text-shadow: 0 0 15px #FFD700; /* إضاءة العنوان */
     }
     p {
-      font-size: 18px;
-      color: #333;
+      font-size: 1.2em;
+      color: #e0e0e0;
     }
-    footer {
-      margin-top: 40px;
-      padding: 10px;
-      background: #444;
-      color: white;
+    .arrow {
+      margin-top: 50px;
+      font-size: 3em;
+      color: #FFD700;
+      animation: bounce 1.5s infinite;
+      text-shadow: 0 0 10px #FFD700;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(15px); }
+    }
+    section {
+      padding: 60px 20px;
+    }
+    /* زر التواصل */
+    .btn {
+      display: inline-block;
+      padding: 12px 25px;
+      margin: 10px;
+      font-size: 1.1em;
+      font-weight: bold;
+      color: #000; /* النص أسود */
+      background-color: #FFD700; /* خلفية ذهبية */
+      border: 2px solid #FFD700;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 0 15px #FFD700; /* إضاءة ذهبية */
+    }
+    .btn:hover {
+      background-color: #000; /* أسود */
+      color: #FFD700; /* ذهبي */
+      box-shadow: 0 0 25px #FFD700, 0 0 50px #FFD700; /* توهج أقوى عند المرور */
     }
   </style>
 </head>
 <body>
   <header>
-    <h1>مرحباً بكم في موقعي 🎉</h1>
+    <h1>أهلاً بكم في موقعي ✨</h1>
+    <p>موقع رقمي فريد من نوعه بالأسود والذهبي</p>
+    <div class="arrow">⬇</div>
   </header>
 
-  <main>
-    <p>هذا أول موقع لي باستخدام GitHub و Netlify 🚀</p>
-  </main>
+  <section>
+    <h2 style="color:#FFD700; text-shadow:0 0 10px #FFD700;">تفاصيل الموقع</h2>
+    <p>هنا تقدر تضيف بطاقاتك الرقمية، معلوماتك أو أي تفاصيل تحبها.</p>
+    <div class="arrow">⬇</div>
+  </section>
 
-  <footer>
-    <p>© 2025 - تصميمي الخاص</p>
-  </footer>
+  <section>
+    <h2 style="color:#FFD700; text-shadow:0 0 10px #FFD700;">تواصل معي</h2>
+    <p>اضغط على أي زر للتواصل:</p>
+    <a href="https://wa.me/966XXXXXXXXX" class="btn">واتساب</a>
+    <a href="https://twitter.com/USERNAME" class="btn">تويتر</a>
+    <a href="https://instagram.com/USERNAME" class="btn">انستقرام</a>
+  </section>
 </body>
-  </html>
+</html>
