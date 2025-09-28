@@ -2,172 +2,263 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>فرسان - متجر البطاقات الرقمية</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>فرسان - البطاقات الرقمية</title>
   <style>
-    body {
-      margin: 0;
-      font-family: 'Tahoma', sans-serif;
-      background: #111;
-      color: #fff;
+    :root{
+      --bg:#070607;
+      --card:#1a191d;
+      --gold:#ffd166;
+      --gray:#888;
+      --muted:#bbb;
     }
-    header {
-      background: linear-gradient(90deg, #111, #333);
-      color: gold;
-      text-align: center;
-      padding: 15px;
-      font-size: 22px;
-      font-weight: bold;
-    }
-    .products {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      padding: 20px;
-    }
-    .product {
-      background: #1c1c1c;
-      border: 1px solid #444;
-      border-radius: 10px;
-      padding: 15px;
-      text-align: center;
-      transition: transform 0.2s;
-    }
-    .product:hover { transform: scale(1.05); }
-    .product h3 { color: gold; }
-    .product button {
-      margin-top: 10px;
-      background: purple;
-      color: #fff;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 6px;
-      cursor: pointer;
-    }
-    .product button:hover { background: goldenrod; }
+    body{margin:0;font-family:"Tahoma",sans-serif;background:var(--bg);color:white;}
+    header{padding:20px;text-align:center;font-size:22px;font-weight:900;background:var(--card);color:var(--gold);}
+    main{padding:20px;}
 
-    .cart {
-      padding: 20px;
-    }
-    .cart h2 { color: gold; }
-    .cart-item {
-      display: flex;
-      justify-content: space-between;
-      background: #1c1c1c;
-      padding: 10px;
-      border-radius: 6px;
-      margin: 5px 0;
-    }
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:15px;}
+    .card{background:var(--card);padding:12px;border-radius:14px;text-align:center;transition:.2s;}
+    .card:hover{transform:scale(1.03);}
+    .card img{width:100%;height:130px;object-fit:cover;border-radius:10px;margin-bottom:8px;}
+    .card h3{margin:6px 0;font-size:16px;color:var(--gold);}
+    .price{color:var(--muted);margin-bottom:8px;}
+    button{background:var(--gold);color:#000;border:none;padding:6px 12px;border-radius:8px;font-weight:600;cursor:pointer;transition:.2s;}
+    button:hover{opacity:.85;}
 
-    /* زر مدى */
-    .mada-btn {
-      margin-top: 20px;
-      background-color: #007A3D; /* مدى أخضر */
-      color: #fff;
-      font-size: 16px;
-      font-weight: bold;
-      padding: 12px 20px;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: background 0.3s;
+    .bottom-nav{
+      position:fixed;left:0;right:0;bottom:0;z-index:1000;
+      display:flex;justify-content:space-around;align-items:center;
+      background: linear-gradient(180deg, rgba(0,0,0,0.7), rgba(0,0,0,0.95));
+      border-top:1px solid rgba(255,255,255,0.06);
+      padding:8px 10px;
+      backdrop-filter: blur(6px);
     }
-    .mada-btn:hover {
-      background-color: #005C2E;
-    }
+    .nav-btn{flex:1;display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--muted);font-size:13px;border-radius:10px;padding:6px;transition:0.2s ease;}
+    .nav-btn.active,.nav-btn:active{color:var(--gold);background: rgba(255,209,102,0.06);}
+    .cart-count{margin-top:4px;background: var(--gold);color:#070607;padding:2px 8px;border-radius:12px;font-weight:900;font-size:12px;display:none;box-shadow:0 2px 6px rgba(0,0,0,0.5);}
 
-    /* bottom nav */
-    .bottom-nav {
-      position: fixed;
-      left: 0; right: 0; bottom: 0;
-      display: flex;
-      justify-content: space-around;
-      background: #000;
-      border-top: 1px solid #444;
-      padding: 10px 0;
-    }
-    .nav-btn {
-      color: #aaa;
-      text-decoration: none;
-      font-size: 14px;
-    }
-    .nav-btn.active { color: gold; }
+    .page{display:none;}
+    .page.active{display:block;}
+
+    .cart-item{display:flex;justify-content:space-between;align-items:center;background:var(--card);padding:10px;margin:6px 0;border-radius:8px;}
+    .cart-item span{color:var(--gold);font-weight:bold;}
+
+    .stars{display:flex;gap:6px;margin:10px 0;}
+    .stars span{font-size:22px;cursor:pointer;color:var(--gray);}
+    .stars span.active{color:var(--gold);}
+
+    footer{text-align:center;padding:14px;background:var(--card);font-size:13px;color:var(--muted);margin-top:40px;}
+    h2{color:var(--gold);}
+
+    /* تبويبات البطاقات */
+    .tabs{display:flex;gap:10px;margin-bottom:15px;}
+    .tab-btn{flex:1;background:var(--card);color:var(--muted);padding:8px;border-radius:10px;cursor:pointer;text-align:center;transition:.2s;}
+    .tab-btn.active{background:var(--gold);color:#000;font-weight:bold;}
+    .tab-content{display:none;}
+    .tab-content.active{display:block;}
   </style>
 </head>
 <body>
-  <header>متجر فرسان - البطاقات الرقمية</header>
+  <header>متجر فرسان الرقمي</header>
 
-  <div id="main" class="products">
-    <div class="product">
-      <h3>بطاقة بلايستيشن</h3>
-      <p>100 ريال</p>
-      <button onclick="addToCart('بطاقة بلايستيشن', 100)">أضف للسلة</button>
-    </div>
-    <div class="product">
-      <h3>بطاقة نتفلكس</h3>
-      <p>50 ريال</p>
-      <button onclick="addToCart('بطاقة نتفلكس', 50)">أضف للسلة</button>
-    </div>
-    <div class="product">
-      <h3>بطاقة آيتونز</h3>
-      <p>75 ريال</p>
-      <button onclick="addToCart('بطاقة آيتونز', 75)">أضف للسلة</button>
-    </div>
-  </div>
+  <main>
+    <!-- الرئيسية -->
+    <section id="home" class="page active">
+      <h2>🎉 أهلاً بك في متجر فرسان</h2>
+      <p>أفضل البطاقات الرقمية والعروض الخاصة.</p>
+    </section>
 
-  <div id="cart" class="cart" style="display:none;">
-    <h2>سلة المشتريات</h2>
-    <div id="cart-items"></div>
-    <h3>الإجمالي: <span id="total">0</span> ريال</h3>
-    <button class="mada-btn" onclick="payWithMada()">ادفع عبر مدى</button>
-  </div>
+    <!-- المنتجات -->
+    <section id="products" class="page">
+      <h2>🛍️ المنتجات</h2>
+      <div class="grid" id="productsGrid"></div>
+    </section>
 
-  <!-- القائمة السفلية -->
-  <div class="bottom-nav">
-    <a href="#" class="nav-btn active" onclick="showPage('main')">الرئيسية</a>
-    <a href="#" class="nav-btn" onclick="showPage('cart')">سلتي</a>
-  </div>
+    <!-- البطاقات -->
+    <section id="cards" class="page">
+      <h2>💳 البطاقات الرقمية</h2>
+      <div class="tabs">
+        <div class="tab-btn active" data-tab="games">🎮 ألعاب</div>
+        <div class="tab-btn" data-tab="ent">🎶 ترفيه</div>
+        <div class="tab-btn" data-tab="soft">💻 برمجيات</div>
+      </div>
+      <div id="games" class="tab-content active grid"></div>
+      <div id="ent" class="tab-content grid"></div>
+      <div id="soft" class="tab-content grid"></div>
+    </section>
+
+    <!-- السلة -->
+    <section id="cart" class="page">
+      <h2>🛒 سلّتي</h2>
+      <div id="cartItems"></div>
+      <p id="cartTotal">الإجمالي: 0 ريال</p>
+    </section>
+
+    <!-- التقييم -->
+    <section id="reviews" class="page">
+      <h2>⭐ آراء العملاء</h2>
+      <div class="stars" id="starRating">
+        <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+      </div>
+      <p id="ratingText">قيّمنا من 1 إلى 5 نجوم</p>
+    </section>
+
+    <!-- التواصل -->
+    <section id="contact" class="page">
+      <h2>📞 تواصل معنا</h2>
+      <p>واتساب: 0550000000</p>
+      <p>إيميل: info@fursan.com</p>
+    </section>
+  </main>
+
+  <!-- التنقل -->
+  <nav class="bottom-nav">
+    <a href="#" class="nav-btn active" data-page="home">🏠<div>الرئيسية</div></a>
+    <a href="#" class="nav-btn" data-page="products">🛍️<div>المنتجات</div></a>
+    <a href="#" class="nav-btn" data-page="cards">💳<div>البطاقات</div></a>
+    <a href="#" class="nav-btn" data-page="cart">🛒<div>سلّتي</div><span class="cart-count" id="cartCount">0</span></a>
+    <a href="#" class="nav-btn" data-page="reviews">⭐<div>التقييم</div></a>
+    <a href="#" class="nav-btn" data-page="contact">📞<div>التواصل</div></a>
+  </nav>
+
+  <footer>© 2025 جميع الحقوق محفوظة لمتجر فرسان</footer>
 
   <script>
-    let cart = [];
-
-    function addToCart(name, price){
-      cart.push({name, price});
-      alert(name + " تمت إضافتها للسلة!");
-      updateCart();
-    }
-
-    function updateCart(){
-      const cartEl = document.getElementById("cart-items");
-      const totalEl = document.getElementById("total");
-      cartEl.innerHTML = "";
-      let total = 0;
-      cart.forEach(item=>{
-        total += item.price;
-        cartEl.innerHTML += `
-          <div class="cart-item">
-            <span>${item.name}</span>
-            <span>${item.price} ريال</span>
-          </div>`;
+    const pages=document.querySelectorAll(".page");
+    const navBtns=document.querySelectorAll(".nav-btn");
+    navBtns.forEach(btn=>{
+      btn.addEventListener("click",e=>{
+        e.preventDefault();
+        pages.forEach(p=>p.classList.remove("active"));
+        navBtns.forEach(b=>b.classList.remove("active"));
+        document.getElementById(btn.dataset.page).classList.add("active");
+        btn.classList.add("active");
       });
-      totalEl.textContent = total;
+    });
+
+    // المنتجات
+    const products=[
+      {id:1,name:"سماعة",price:120,img:"https://via.placeholder.com/200x130"},
+      {id:2,name:"كيبورد",price:200,img:"https://via.placeholder.com/200x130"},
+      {id:3,name:"ماوس",price:80,img:"https://via.placeholder.com/200x130"}
+    ];
+    const productsGrid=document.getElementById("productsGrid");
+    products.forEach(p=>{
+      let div=document.createElement("div");
+      div.className="card";
+      div.innerHTML=`<img src="${p.img}"><h3>${p.name}</h3><div class="price">${p.price} ريال</div><button onclick="addToCart(${p.id})">إضافة</button>`;
+      productsGrid.appendChild(div);
+    });
+
+    // البطاقات
+    const cards={
+      games:[{id:101,name:"بطاقة بلايستيشن",price:200,img:"https://via.placeholder.com/200x130"},
+             {id:102,name:"بطاقة اكس بوكس",price:180,img:"https://via.placeholder.com/200x130"}],
+      ent:[{id:201,name:"بطاقة نتفلكس",price:100,img:"https://via.placeholder.com/200x130"},
+           {id:202,name:"بطاقة سبوتيفاي",price:70,img:"https://via.placeholder.com/200x130"}],
+      soft:[{id:301,name:"بطاقة مايكروسوفت",price:250,img:"https://via.placeholder.com/200x130"},
+            {id:302,name:"بطاقة ادوبي",price:300,img:"https://via.placeholder.com/200x130"}]
+    };
+    function renderCards(arr,container){
+      arr.forEach(c=>{
+        let div=document.createElement("div");
+        div.className="card";
+        div.innerHTML=`<img src="${c.img}"><h3>${c.name}</h3><div class="price">${c.price} ريال</div><button onclick="addToCart(${c.id})">إضافة</button>`;
+        container.appendChild(div);
+      });
+    }
+    renderCards(cards.games,document.getElementById("games"));
+    renderCards(cards.ent,document.getElementById("ent"));
+    renderCards(cards.soft,document.getElementById("soft"));
+
+    // التحكم في التبويبات
+    const tabBtns=document.querySelectorAll(".tab-btn");
+    const tabContents=document.querySelectorAll(".tab-content");
+    tabBtns.forEach(btn=>{
+      btn.addEventListener("click",()=>{
+        tabBtns.forEach(b=>b.classList.remove("active"));
+        tabContents.forEach(c=>c.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.tab).classList.add("active");
+      });
+    });
+
+    // السلة
+    let CART=[];
+    const cartItems=document.getElementById("cartItems");
+    const cartTotal=document.getElementById("cartTotal");
+    const cartCountEl=document.getElementById("cartCount");
+
+    function addToCart(id){
+      let item=[...products,...cards.games,...cards.ent,...cards.soft].find(p=>p.id===id);
+      let found=CART.find(i=>i.id===id);
+      if(found){found.qty++;}
+      else{CART.push({...item,qty:1});}
+      renderCart();
+    }
+    function renderCart(){
+      cartItems.innerHTML="";
+      let total=0;
+      CART.forEach(i=>{
+        total+=i.price*i.qty;
+        let row=document.createElement("div");
+        row.className="cart-item";
+        row.innerHTML=`${i.name} x${i.qty} <span>${i.price*i.qty} ريال</span>`;
+        cartItems.appendChild(row);
+      });
+      cartTotal.textContent="الإجمالي: "+total+" ريال";
+      updateCartBadge();
+    }
+    function updateCartBadge(){
+      const count=CART.reduce((s,i)=>s+i.qty,0);
+      if(count>0){
+        cartCountEl.style.display="inline-block";
+        cartCountEl.textContent=count;
+      } else {
+        cartCountEl.style.display="none";
+      }
     }
 
-    function showPage(page){
-      document.getElementById("main").style.display = "none";
-      document.getElementById("cart").style.display = "none";
-      document.getElementById(page).style.display = "block";
-      document.querySelectorAll(".nav-btn").forEach(btn=>btn.classList.remove("active"));
-      if(page === "main") document.querySelectorAll(".nav-btn")[0].classList.add("active");
-      if(page === "cart") document.querySelectorAll(".nav-btn")[1].classList.add("active");
-    }
-
-    function payWithMada(){
-      alert("🚧 الدفع عبر مدى يحتاج ربط مع بوابة دفع (HyperPay أو PayTabs).");
-    }
+    // التقييم
+    const stars=document.querySelectorAll("#starRating span");
+    const ratingText=document.getElementById("ratingText");
+    stars.forEach((star,idx)=>{
+      star.addEventListener("click",()=>{
+        stars.forEach((s,i)=>s.classList.toggle("active",i<=idx));
+        ratingText.textContent="شكراً لتقييمك: "+(idx+1)+" نجوم";
+      });
+    });
   </script>
 </body>
-</html>
+</html><div class="checkout">
+  <h2>إجمالي السلة: <span id="cart-total">0 ريال</span></h2>
+  <!-- زر مدى -->
+  <button class="mada-btn" onclick="payWithMada()">ادفع عبر مدى</button>
+</div>
+
+<style>
+  .mada-btn {
+    background-color: #007A3D; /* لون مدى أخضر */
+    color: #fff;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 0.3s;
+  }
+  .mada-btn:hover {
+    background-color: #005C2E;
+  }
+</style>
+
+<script>
+  function payWithMada(){
+    alert("🚧 الدفع عبر مدى يحتاج ربط مع بوابة دفع (HyperPay أو PayTabs).");
+    // هنا مستقبلاً تحط كود الربط مع بوابة الدفع
+  }
+</script>
