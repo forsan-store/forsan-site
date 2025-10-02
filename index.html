@@ -3,124 +3,87 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>فرسان - متجر الاشتراكات</title>
+  <title>متجر فرسان</title>
   <style>
     body {
-      margin: 0;
-      font-family: "Cairo", sans-serif;
-      background: linear-gradient(135deg, #0f0f0f, #1a1a1a, #2c2c2c);
-      color: white;
-    }
-    header {
+      background: #111;
+      color: #fff;
+      font-family: 'Tajawal', sans-serif;
       text-align: center;
-      padding: 40px 20px;
-      background: linear-gradient(90deg, #d4af37, #c28f2c);
-      color: black;
-      font-size: 28px;
-      font-weight: bold;
-      letter-spacing: 2px;
-      text-shadow: 1px 1px 2px rgba(0,0,0,0.4);
-    }
-    main {
-      max-width: 900px;
-      margin: 40px auto;
       padding: 20px;
     }
     .product {
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid #444;
-      border-radius: 15px;
-      padding: 20px;
-      margin-bottom: 25px;
-      transition: transform 0.3s ease;
-    }
-    .product:hover {
-      transform: translateY(-5px);
-    }
-    h2 {
-      margin: 0 0 10px 0;
-      color: #d4af37;
-    }
-    .coming-soon {
       background: #222;
-      border: 1px dashed #777;
-      padding: 15px;
-      border-radius: 10px;
-      color: #aaa;
-      text-align: center;
-      font-style: italic;
+      border-radius: 12px;
+      padding: 20px;
+      margin: 20px 0;
+      box-shadow: 0 0 15px rgba(255,215,0,0.3);
     }
-    .price {
-      font-size: 22px;
-      font-weight: bold;
-      margin: 10px 0;
-      color: #0f0;
-    }
-    .red-warning {
-      color: #ff3333;
-      font-size: 14px;
-      margin-top: 10px;
-      font-weight: bold;
-    }
-    .blue-number {
-      color: #3399ff;
-      font-weight: bold;
-      font-size: 16px;
-      text-decoration: underline;
-    }
-    .whatsapp-btn {
+    .price { color: limegreen; font-size: 22px; font-weight: bold; }
+    .warning { color: red; font-size: 14px; margin-top: 10px; }
+    .btn {
       display: inline-block;
+      background: #25D366;
+      color: #fff;
       padding: 12px 25px;
       margin-top: 15px;
-      background: #25D366;
-      color: white;
-      border-radius: 10px;
+      border-radius: 8px;
       text-decoration: none;
       font-weight: bold;
       transition: 0.3s;
     }
-    .whatsapp-btn:hover {
-      background: #1ebe5d;
-    }
-    footer {
-      text-align: center;
-      padding: 20px;
+    .btn:hover { background: #128C7E; }
+    .support {
+      margin-top: 15px;
       font-size: 14px;
-      background: #111;
-      color: #888;
-      margin-top: 40px;
+    }
+    .support a {
+      color: dodgerblue;
+      text-decoration: underline;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
 
-  <header>متجر فرسان للاشتراكات الرقمية</header>
+  <h1>⚔️ متجر فرسان ⚔️</h1>
+  <p>أفضل العروض الرقمية – خدمة مضمونة 100%</p>
 
-  <main>
-    <!-- المنتج المتاح -->
-    <div class="product">
-      <h2>بلايستيشن بلس - شهر واحد</h2>
-      <p>اشتراك رسمي لحساب مشترك يعمل على <strong>PS4 و PS5</strong>.</p>
-      <p class="price">18 ريال (الحساب مشترك)</p>
-      <p class="red-warning">⚠️ ممنوع مشاركة الحساب مع أحد. إذا حاولت التغيير أو المشاركة، سيتم سحب الحساب بدون أي تعويض.</p>
-      <p>📞 للاستفسار: <span class="blue-number">+966547349213</span></p>
-      <a class="whatsapp-btn" href="https://wa.me/966547349213?text=عندي%20استفسار%20-%20رقم%20طلبي%20%231234" target="_blank">تواصل عبر واتساب</a>
+  <div class="product">
+    <h2>🎮 بلايستيشن بلس (شهر واحد)</h2>
+    <p>اشتراك أصلي يعمل على <b>PS4 و PS5</b> ⚡ الحساب مشترك</p>
+    <p class="price">18 ريال</p>
+
+    <p class="warning">⚠️ ممنوع تغيير أي بيانات من الحساب.<br>
+    ⚠️ ممنوع مشاركة الحساب مع أحد.<br>
+    ⛔ في حال المخالفة يتم سحب الحساب فوراً بدون أي تعويضات.</p>
+
+    <a id="whatsappBtn" class="btn">📱 اطلب عبر واتساب</a>
+
+    <div class="support">
+      للاستفسار: <a href="tel:+966547349213">+966547349213</a>
     </div>
+  </div>
 
-    <!-- منتجات قادمة -->
-    <div class="coming-soon">🔜 بلايستيشن بلس - 3 شهور (قريبًا)</div>
-    <div class="coming-soon">🔜 بلايستيشن بلس - 12 شهر (قريبًا)</div>
-  </main>
+  <script>
+    document.getElementById("whatsappBtn").addEventListener("click", function() {
+      // رقم الطلب العشوائي
+      let orderId = Math.floor(100000000 + Math.random() * 900000000); 
+      
+      // رقمك
+      let phone = "966547349213";
+      
+      // الرسالة المرسلة للواتساب
+      let msg = `أحتاج مساعدة في الطلب رقم: ${orderId}`;
+      
+      // يفتح الواتساب مع الرسالة
+      window.location.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
+    });
+  </script>
 
   <footer>
-    جميع الحقوق محفوظة © 2025 - متجر فرسان
+    <p>© 2025 متجر فرسان - جميع الحقوق محفوظة</p>
   </footer>
 
-  <!-- رسالة ترحيب -->
-  <script>
-    window.onload = () => {
-      alert("🎉 مرحبًا بك في متجر فرسان!\n\n📌 تذكر القوانين:\n- الحساب مشترك ويعمل على PS4 و PS5\n- ممنوع مشاركة الحساب\n- أي تغيير يؤدي لسحب الحساب فورًا بدون تعويضات\n\n✨ نتمنى لك تجربة ممتعة.");
-    };
-  </script>
 </body>
 </html>
