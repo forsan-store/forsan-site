@@ -1,89 +1,107 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>متجر فرسان</title>
-  <style>
-    body {
-      background: #111;
-      color: #fff;
-      font-family: 'Tajawal', sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-    .product {
-      background: #222;
-      border-radius: 12px;
-      padding: 20px;
-      margin: 20px 0;
-      box-shadow: 0 0 15px rgba(255,215,0,0.3);
-    }
-    .price { color: limegreen; font-size: 22px; font-weight: bold; }
-    .warning { color: red; font-size: 14px; margin-top: 10px; }
-    .btn {
-      display: inline-block;
-      background: #25D366;
-      color: #fff;
-      padding: 12px 25px;
-      margin-top: 15px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-    }
-    .btn:hover { background: #128C7E; }
-    .support {
-      margin-top: 15px;
-      font-size: 14px;
-    }
-    .support a {
-      color: dodgerblue;
-      text-decoration: underline;
-      font-weight: bold;
-    }
-  </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>متجر فرسان</title>
+<style>
+  body {
+    background-color: #121212;
+    font-family: Arial, sans-serif;
+    color: #ddd;
+    margin: 0;
+    padding: 20px;
+  }
+  h1 {
+    color: #f6c90e;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+  .info {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  .info small {
+    display: block;
+    margin-top: 5px;
+    color: #ffc107;
+  }
+  .card {
+    background-color: #252525;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    text-align: center;
+  }
+  .card h2 {
+    margin: 10px 0;
+  }
+  .price {
+    color: #24b324;
+    font-size: 1.4em;
+    margin-bottom: 12px;
+    font-weight: bold;
+  }
+  .btn-whatsapp {
+    background-color: #3bb143;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 10px;
+  }
+  .contact {
+    font-size: 0.9em;
+    color: #2196f3;
+  }
+  .coming-soon {
+    color: #888;
+    font-size: 1.1em;
+  }
+  footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #777;
+    font-size: 0.9em;
+  }
+</style>
 </head>
 <body>
 
-  <h1>⚔️ متجر فرسان ⚔️</h1>
-  <p>أفضل العروض الرقمية – خدمة مضمونة 100%</p>
+<h1>⚔️ متجر فرسان ⚔️</h1>
+<div class="info">
+  أفضل العروض الرقمية - خدمة مضمونة 100%<br />
+  <small>⏰ ساعات العمل: من 3 العصر حتى 11 مساءً</small>
+  <small>⚠️ خارج هذه الأوقات لن يتم الرد</small>
+</div>
 
-  <div class="product">
-    <h2>🎮 بلايستيشن بلس (شهر واحد)</h2>
-    <p>اشتراك أصلي يعمل على <b>PS4 و PS5</b> ⚡ الحساب مشترك</p>
-    <p class="price">18 ريال</p>
+<div class="card">
+  <h2>بلايستيشن بلس (شهر واحد)</h2>
+  <p>اشتراك أصلي يعمل على PS4 و PS5</p>
+  <p class="price">22 ريال</p>
+  <a href="https://wa.me/966547349213" target="_blank" class="btn-whatsapp">اطلب عبر واتساب</a>
+  <div class="contact">للاستفسار: 966547349213+</div>
+</div>
 
-    <p class="warning">⚠️ ممنوع تغيير أي بيانات من الحساب.<br>
-    ⚠️ ممنوع مشاركة الحساب مع أحد.<br>
-    ⛔ في حال المخالفة يتم سحب الحساب فوراً بدون أي تعويضات.</p>
+<div class="card">
+  <h2>بلايستيشن بلس (3 شهور)</h2>
+  <p class="coming-soon">قريبًا</p>
+</div>
 
-    <a id="whatsappBtn" class="btn">📱 اطلب عبر واتساب</a>
+<div class="card">
+  <h2>بلايستيشن بلس (12 شهر)</h2>
+  <p class="coming-soon">قريبًا</p>
+</div>
 
-    <div class="support">
-      للاستفسار: <a href="tel:+966547349213">+966547349213</a>
-    </div>
-  </div>
-
-  <script>
-    document.getElementById("whatsappBtn").addEventListener("click", function() {
-      // رقم الطلب العشوائي
-      let orderId = Math.floor(100000000 + Math.random() * 900000000); 
-      
-      // رقمك
-      let phone = "966547349213";
-      
-      // الرسالة المرسلة للواتساب
-      let msg = `أحتاج مساعدة في الطلب رقم: ${orderId}`;
-      
-      // يفتح الواتساب مع الرسالة
-      window.location.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
-    });
-  </script>
-
-  <footer>
-    <p>© 2025 متجر فرسان - جميع الحقوق محفوظة</p>
-  </footer>
+<footer>
+  © 2025 متجر فرسان - جميع الحقوق محفوظة
+</footer>
 
 </body>
 </html>
