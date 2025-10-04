@@ -6,102 +6,117 @@
 <title>متجر فرسان</title>
 <style>
   body {
-    background-color: #121212;
-    font-family: Arial, sans-serif;
+    background-color: #101010;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: #ddd;
     margin: 0;
-    padding: 20px;
+    padding: 20px 10px;
   }
   h1 {
-    color: #f6c90e;
+    color: #f7c12a;
     text-align: center;
-    margin-bottom: 10px;
-    font-weight: bold;
+    font-weight: 900;
+    margin-bottom: 12px;
   }
-  .info {
+  .work-hours {
     text-align: center;
     margin-bottom: 20px;
-    color: #fff;
+    font-size: 0.95em;
+    color: #eee;
   }
-  .info small {
+  .work-hours small {
     display: block;
-    margin-top: 5px;
-    color: #ffc107;
+    margin-top: 6px;
+    color: #f7c12a;
   }
   .card {
-    background-color: #252525;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
+    background-color: #1e1e1e;
+    border-radius: 15px;
+    padding: 20px 25px;
+    margin: 16px auto;
+    max-width: 400px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.7);
     text-align: center;
+    transition: transform 0.3s ease;
+  }
+  .card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 20px rgba(0,186,19,0.6);
   }
   .card h2 {
-    margin: 10px 0;
+    margin-bottom: 12px;
+    font-size: 1.4em;
+    font-weight: 700;
   }
   .price {
-    color: #24b324;
-    font-size: 1.4em;
-    margin-bottom: 12px;
-    font-weight: bold;
+    font-size: 1.6em;
+    color: #18d618;
+    font-weight: 900;
+    margin: 18px 0;
   }
   .btn-whatsapp {
-    background-color: #3bb143;
+    background-color: #25d366;
     color: white;
-    padding: 12px 30px;
-    border: none;
-    border-radius: 8px;
+    font-weight: 700;
     font-size: 1.1em;
-    cursor: pointer;
     text-decoration: none;
+    padding: 13px 38px;
+    border-radius: 12px;
     display: inline-block;
     margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0,178,52,0.6);
+  }
+  .btn-whatsapp:hover {
+    background-color: #1ebe56;
+    box-shadow: 0 6px 12px rgba(0,145,43,0.7);
   }
   .contact {
     font-size: 0.9em;
-    color: #2196f3;
+    color: #4dc3ff;
+    text-decoration: underline;
   }
-  .coming-soon {
-    color: #888;
-    font-size: 1.1em;
+  .soon {
+    color: #a0a0a0;
+    font-size: 1.15em;
+    margin-top: 15px;
   }
   footer {
-    margin-top: 40px;
     text-align: center;
-    color: #777;
-    font-size: 0.9em;
+    color: #545454;
+    margin-top: 40px;
+    font-size: 0.85em;
   }
 </style>
 </head>
 <body>
 
 <h1>⚔️ متجر فرسان ⚔️</h1>
-<div class="info">
-  أفضل العروض الرقمية - خدمة مضمونة 100%<br />
+
+<div class="work-hours">
+  أفضل العروض الرقمية - خدمة 100% مضمونة
   <small>⏰ ساعات العمل: من 3 العصر حتى 11 مساءً</small>
   <small>⚠️ خارج هذه الأوقات لن يتم الرد</small>
 </div>
 
 <div class="card">
-  <h2>بلايستيشن بلس (شهر واحد)</h2>
+  <h2>🎮 بلايستيشن بلس (شهر واحد)</h2>
   <p>اشتراك أصلي يعمل على PS4 و PS5</p>
   <p class="price">22 ريال</p>
   <a href="https://wa.me/966547349213" target="_blank" class="btn-whatsapp">اطلب عبر واتساب</a>
-  <div class="contact">للاستفسار: 966547349213+</div>
+  <p class="contact">للاستفسار: 966547349213+</p>
 </div>
 
 <div class="card">
-  <h2>بلايستيشن بلس (3 شهور)</h2>
-  <p class="coming-soon">قريبًا</p>
+  <h2>🎮 بلايستيشن بلس (3 شهور)</h2>
+  <p class="soon">قريبًا</p>
 </div>
 
 <div class="card">
-  <h2>بلايستيشن بلس (12 شهر)</h2>
-  <p class="coming-soon">قريبًا</p>
+  <h2>🎮 بلايستيشن بلس (12 شهر)</h2>
+  <p class="soon">قريبًا</p>
 </div>
 
-<footer>
-  © 2025 متجر فرسان - جميع الحقوق محفوظة
-</footer>
+<footer>© 2025 متجر فرسان - جميع الحقوق محفوظة</footer>
 
 </body>
 </html>
